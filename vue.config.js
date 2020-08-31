@@ -1,5 +1,1 @@
-module.exports = {
-    transpileDependencies: [
-        '@inkline/inkline'
-    ]
-};
+module.exports = {};

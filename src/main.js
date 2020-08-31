@@ -1,13 +1,12 @@
-import Vue from 'vue'
-import App from './App.vue'
-import { Inkline } from '@inkline/inkline/src';
-import * as components from '@inkline/inkline/src/components';
-import '@inkline/inkline/src/inkline.scss';
+import Vue from 'vue';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import App from './App.vue';
 
-Vue.use(Inkline, { components });
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  render: (h) => h(App),
+}).$mount('#app');
