@@ -1,0 +1,1 @@
+.sound-button{width:160px;height:160px;display:flex;justify-content:center;align-items:center}.sound-button:hover{cursor:pointer}.button-disabled{border:grey;background-color:#d3d3d3}.button-disabled:hover{cursor:not-allowed}
