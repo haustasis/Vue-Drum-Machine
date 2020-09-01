@@ -14,15 +14,15 @@
             </b-row>
             <b-row class="mx-2 mt-4">
               <label for="volume">Volume</label>
-              <b-form-input v-model="value" type="range" min="0" max="5" />
+              <b-form-input v-model="volume" type="range" min="0" max="5" />
             </b-row>
           </b-card>
           <b-card class="my-4">
             <b-row class="justify-content-center">
               <div
                 :class="[
-                  'sound-button border border-warning rounded-lg m-1',
-                  { 'button-disabled': !isOn },
+                  'sound-button border  rounded-lg m-1',
+                  isOn ? 'border-warning' : 'button-disabled',
                 ]"
                 v-for="clip in clips"
                 :key="clip.name"
@@ -47,6 +47,7 @@ export default {
   data() {
     return {
       clips,
+      volume: 2,
       isOn: true,
       lastPlayed: 'No Sound',
     };
@@ -55,6 +56,7 @@ export default {
     playClip({ name, url }) {
       if (this.isOn) {
         let s = new Audio(url);
+        s.volume = this.volume / 5;
         s.play();
         this.lastPlayed = name;
       }
@@ -77,5 +79,9 @@ export default {
 
 .button-disabled {
   border: gray;
+  background-color: lightgray;
+  &:hover {
+    cursor: not-allowed;
+  }
 }
 </style>
