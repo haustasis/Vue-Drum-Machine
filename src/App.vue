@@ -8,6 +8,9 @@
               <b-form-checkbox v-model="isOn" switch size="lg"
                 >Power</b-form-checkbox
               >
+              <b-button @click="stop" variant="outline-info">
+                Stop
+              </b-button>
               <div class="border rounded-lg px-4 py-2">
                 {{ lastPlayed }}
               </div>
@@ -50,16 +53,21 @@ export default {
       volume: 2,
       isOn: true,
       lastPlayed: 'No Sound',
+      currentAudio: {},
     };
   },
   methods: {
     playClip({ name, url }) {
       if (this.isOn) {
-        let s = new Audio(url);
-        s.volume = this.volume / 5;
-        s.play();
+        const a = new Audio(url);
+        a.volume = this.volume / 5;
+        a.play();
+        this.currentAudio = a;
         this.lastPlayed = name;
       }
+    },
+    stop() {
+      this.currentAudio.pause();
     },
   },
 };
